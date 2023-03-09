@@ -1,0 +1,24 @@
+{
+  "name": "algoritmos",
+  "version": "1.0.0",
+  "description": "Esse é o repositório de implementações feitas durante a disciplina de algoritimos",
+  "main": "teste.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryofac/Algoritmos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryofac/Algoritmos/issues"
+  },
+  "homepage": "https://github.com/ryofac/Algoritmos#readme",
+  "dependencies": {
+    "math": "^0.0.3"
+  }
+}
