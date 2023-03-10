@@ -1,5 +1,5 @@
 import chalk from "chalk"
-// Biblioteca que adciona algumas cores e funcionalidades visuais no terminal
+// Biblioteca que adciona algumas cores e funcionalidades visuais básicas no terminal
 
 import { question } from "readline-sync"
 
@@ -8,7 +8,7 @@ function main(){
     header('Calculadora de água')
     
     // Entrada:
-    var pes = input('Qual é o seu peso?\n>> ')
+    var pes = Number(input('Qual é o seu peso? (em Kg)\n>> '))
 
     // Processamento: 
     const agua_moderado = arredondar(moderado(pes))
@@ -16,6 +16,7 @@ function main(){
 
     // Saída:
     header('Atenção!')
+    print(`Peso = ${pes}Kg`)
     print(`O valor de água diário recomendado para atividades físicas ${verde('moderadas ')}é de ${verde(agua_moderado)} L`)
     print(`O valor de água diário recomendado para atividades físicas ${vermelho('intensas' )} é de ${vermelho(agua_intenso)} L`)
     header('Volte Sempre!')
@@ -23,7 +24,7 @@ function main(){
 }
 
 
-// Processamento:
+// Exercício intenso ou moderado:
 function moderado(peso){
     var quantidade_agua = (peso / 1000) * 35
     return quantidade_agua
