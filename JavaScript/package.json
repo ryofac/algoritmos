@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/ryofac/Algoritmos#readme",
   "dependencies": {
-    "math": "^0.0.3"
+    "chalk": "^5.2.0",
+    "math": "npm:Math@^0.0.1-security",
+    "Math": "^0.0.1-security"
   }
 }
