@@ -5,3 +5,6 @@ A lista 1 foi feita em python por conta de um erro ao instalar o ambiente do nod
 As próximas listas vão ser feitas usando o JavaScript
 
 Alguns exercícios fiz utilizando estruturas mais complexas como listas por achar mais prático de resolver, ou que reduzia o código
+
+## Lista 02
+A lista 2 vem sendo trabalhada utilizando funções na linguagem JavaScript
