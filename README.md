@@ -1,5 +1,5 @@
 # Algoritmos
-Mudanças feitas durante o curso
+### Mudanças feitas durante o curso:
 ## Listas:
 ### Lista 01:
 * A lista 1 foi feita utilizando python 
