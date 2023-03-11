@@ -1,3 +1,4 @@
+// npm install chalk
 import chalk from "chalk"
 // Biblioteca que adciona algumas cores e funcionalidades visuais básicas no terminal
 import { question } from "readline-sync"
