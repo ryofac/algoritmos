@@ -16,4 +16,5 @@
 * Os programas desses desafios utilizam funções parecidas, vistas em aula
 * Utiliza a biblioteca "chalk" (mostrar cores no terminal)
 > Os arquivos calculadora_agua.js e calculadora_batimentos.js também estão presentes na lista 2
-> chalk = https://github.com/chalk/chalk
+
+> chalk: https://github.com/chalk/chalk
