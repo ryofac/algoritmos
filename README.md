@@ -1,9 +1,14 @@
 # Algoritmos
-## Lista 01
+## Lista 01:
 * A lista 1 foi feita utilizando python 
 * As próximas listas vão ser feitas utilizando JavaScript
 > Alguns exercícios fiz utilizando estruturas mais complexas como listas por achar mais prático de resolver, ou que reduzia o código
 
-## Lista 02
-* A lista 2 utliza JavaScript
-* Trabalha funç
+## Lista 02:
+* Utliza JavaScript
+* Trabalha funções
+> Nessa lista, avancei no desafio de resolver somente com as implementações vistas em aula
+
+## Desafios:
+* Referentes aos desafios do mural (se houverem mais)
+> Os arquivos calculadora_agua.js e calculadora_batimentos.js também estão presentes na lista 2
