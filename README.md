@@ -5,4 +5,5 @@
 > Alguns exercícios fiz utilizando estruturas mais complexas como listas por achar mais prático de resolver, ou que reduzia o código
 
 ## Lista 02
-A lista 2 vem sendo trabalhada utilizando funções na linguagem JavaScript
+* A lista 2 utliza JavaScript
+* Trabalha funç
