@@ -1,0 +1,13 @@
+{
+  "name": "lista02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculadora_agua.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
