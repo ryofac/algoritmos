@@ -47,7 +47,7 @@ function pesado(freq){
     var min = Math.floor(0.7 * freq)
     var max = Math.floor(0.85 * freq)
     return `O valor ${azul('ideal')} de batimentos por minuto para atividades físicas ${vermelho('pesadas')}:\n >> Entre ${min} bpm (min) e ${max} bpm (max)`
-}
+    }
 
 // Cabeçalho
 function header(txt){
@@ -63,18 +63,19 @@ function header(txt){
 function vermelho(txt){
     const resultado = chalk.red(txt) 
     return resultado // Retorna o texto em vermelho
-}
+    }
+
 
 // Função que fornecerá a cor verde no terminal
 function verde(txt){
     const resultado = chalk.green(txt) 
     return resultado // Retorna o texto em verde
-}
+    }   
 
 // Função que fornecerá a cor azul no terminal
 function azul(txt){
     return chalk.blueBright(txt)
-}
+    }
 
 
 main()

@@ -1,6 +1,6 @@
 //  Calculadora de taxa metabólica basal em homens: (TMB)
 /* O metabolismo basal é a quantidade de energia que o corpo necessita para desempenhar suas funções essenciais enquanto está em repouso.
-Dado pela fórmula(Para homens): MB = 88,36 + (13,4 x peso) + (4,8 x altura) - (5,7 x idade)
+Dado pela fórmula(Para homens): TMB = 88,36 + (13,4 x peso) + (4,8 x altura) - (5,7 x idade)
  */
 import { question } from "readline-sync";
 import chalk from "chalk";
