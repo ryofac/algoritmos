@@ -11,6 +11,11 @@
 * Trabalha funções
 > Nessa lista, avancei no desafio de resolver somente com as implementações vistas em aula
 
+### Lista 03:
+* Trabalha mais funções 
+* Lista do professor Fábio
+> Aumentou a minha proeficiência em funç
+
 ## Desafios:
 * Referentes aos desafios do mural (se houverem mais)
 ### Desafio 01:
