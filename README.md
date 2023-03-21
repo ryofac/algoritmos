@@ -14,7 +14,7 @@
 ### Lista 03:
 * Trabalha mais funções 
 * Lista do professor Fábio
-> Aumentou a minha proeficiência em funç
+> Aumentou a minha proeficiência em funções
 
 ## Desafios:
 * Referentes aos desafios do mural (se houverem mais)
