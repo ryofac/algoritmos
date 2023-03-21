@@ -13,6 +13,7 @@
 
 ### Lista 03:
 * Trabalha mais funções 
+* Também utiliza python, porque foi baseado na lista 01
 * Lista do professor Fábio
 > Aumentou a minha proeficiência em funções
 
