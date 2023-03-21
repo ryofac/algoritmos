@@ -15,7 +15,7 @@
 ### Lista D:
 * Trabalha mais funções 
 * Também utiliza python, porque foi baseado nas listas A e B
-* Lista do professor Fábio
+* Lista 2a do professor Fábio
 > Aumentou a minha proeficiência em funções
 
 ## Desafios:
