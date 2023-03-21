@@ -1,17 +1,18 @@
 # Algoritmos
 ### Mudanças feitas durante o curso:
 ## Listas:
-### Lista 01:
-* A lista 1 foi feita utilizando python 
+### Lista A:
+* A lista A foi feita utilizando python 
+* Dividida em duas partes segundo a atividade
 * As próximas listas vão ser feitas utilizando JavaScript
 > Alguns exercícios fiz utilizando estruturas mais complexas como listas por achar mais prático de resolver, ou que reduzia o código
 
-### Lista 02:
+### Lista B:
 * Utliza JavaScript
 * Trabalha funções
 > Nessa lista, avancei no desafio de resolver somente com as implementações vistas em aula
 
-### Lista 03:
+### Lista C:
 * Trabalha mais funções 
 * Também utiliza python, porque foi baseado na lista 01
 * Lista do professor Fábio
