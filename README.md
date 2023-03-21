@@ -11,6 +11,12 @@
 * Trabalha funções
 > Nessa lista, avancei no desafio de resolver somente com as implementações vistas em aula
 
+### Lista 03:
+* Trabalha mais funções 
+* Também utiliza python, porque foi baseado na lista 01
+* Lista do professor Fábio
+> Aumentou a minha proeficiência em funções
+
 ## Desafios:
 * Referentes aos desafios do mural (se houverem mais)
 ### Desafio 01:
