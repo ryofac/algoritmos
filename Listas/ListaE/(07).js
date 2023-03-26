@@ -2,14 +2,14 @@ import { question } from "readline-sync";
 function main(){
 header('VERIFICADOR DE TRIÂNGULOS')
 // Entrada
- const angulo1 = Number(question('Digite o primeiro ângulo: \n>> '))
- const angulo2 = Number(question('Digite o segundo ângulo \n>> '))
- const angulo3 = Number(question('Digite o terceiro ângulo \n>> '))
+ const lado1 = Number(question('Digite o primeiro lado: \n>> '))
+ const lado2 = Number(question('Digite o segundo lado: \n>> '))
+ const lado3 = Number(question('Digite o terceiro lado \n>> '))
 
  // Processamento
-if (is_triangle(angulo1 ,angulo2, angulo3)){
+if (is_triangle(lado1 ,lado2, lado3)){
         header('CLASSIFICAÇÃO:')
-        if(a1 === 90|| a2 === 90|| a3 === 90 ){
+        if(a1 >  a2 && a1 > a3 ){
             console.log('O triângulo é RETÂNGULO') // Saída se o triângulo tiver pelo menos um ângulo = 90
         }
         else if(a1 > 90 || a2 > 90 || a3 > 90 ){ // Saída se o ângulo tiver pelo menos um ângulo maior que 90
@@ -24,7 +24,9 @@ if (is_triangle(angulo1 ,angulo2, angulo3)){
 
 
 function is_triangle(a1, a2, a3){
-    return a1 + a2 + a3  === 180 && is_not_zero_minus(a1,a2,a3)
+    return a1 + a2 >=a3 
+    || a2 + a3 > a1 
+    ||a1 + a3 > a2 && is_not_zero_minus(a1,a2,a3)
 
 }
 function is_not_zero_minus(a1,a2,a3){ // Verifica se os números são iguais a 0

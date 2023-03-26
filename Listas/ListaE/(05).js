@@ -11,11 +11,10 @@ function main(){
 }
 
 function crescente(n1,n2,n3){
-    /* Processamento
-    Nas condicionais, vê-se primeiro o maior número 
-    */
+    /* Processamento :
+    Nas condicionais, vê-se primeiro o maior número */
 
-    if(n1 > n2 && n1 > n3){ // Verifica se o primeiro número é o maior
+    if(is_higher(n1,n2,n3)){ // Verifica se o primeiro número é o maior
         if(n2 > n3){
             return ` ${n3}, ${n2}, ${n1}`
         }
@@ -23,7 +22,7 @@ function crescente(n1,n2,n3){
             return `${n2}, ${n3}, ${n1}`
         }
     }
-    else if (n2 > n1 && n2 > n3){ // Verifica se o segundo número é o maior
+    else if (is_higher(n2,n3,n1)){ // Verifica se o segundo número é o maior
         if(n1 > n3 ){
             return ` ${n3}, ${n1}, ${n2}`
         }
@@ -38,6 +37,10 @@ function crescente(n1,n2,n3){
             return `${n1}, ${n2}, ${n3}`
         }
     }
+ }
+
+ function is_higher(n1,n2,n3){
+    return n1 >= n2 && n1 >= n3 // Retorna o valor booleano dessa expressão, ajuda bastante !
  }
 
 main()
