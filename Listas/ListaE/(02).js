@@ -1,39 +1,28 @@
 import { question } from "readline-sync";
-
 function main(){
-    // Entrada:
-    const num1 = Number(ler('Digite o primeiro número: '))
-    const num2 = Number(ler('Digite o segundo número: '))
-    const num3 = Number(ler('Digite o terceiro número: '))
-
-    // Saída
-    console.log(`O maior desses três números é o ${maior(num1, num2, num3)}`)
-
+    header('VERIFICADOR DE MENOR NÚMERO')
+    const n1 = Number(question('Digite o primeiro número \n> '))
+    const n2 = Number(question('Digite o segundo número \n> '))
+    console.log(`O menor valor entre os números digitados é : ${menor(n1,n2)}`)
 }
 
-
-function ler(txt){
-    // Função para otimizar o imput dos dados
-    const pergunta = question(txt)
-    return pergunta
-}
-
-
-function maior(n1,n2,n3){
-    /* Processamento
-    Foram feitas 3 situações condicionais para analisar qual dos números é maior ou menor
-    */
-
-    if(n1 > n2 && n1 > n3){
-        return n1
-    }
-    else if (n2 > n1 && n2 > n3){
-        return n2
+function menor(num1,num2){ // Verifica os números e retorna o menor!
+    if (num1 > num2){
+    return num2
+    } else if (num2 > num1){
+    return num1
     }
     else{
-        return n3
+    return  ' VALORES IGUAIS '
     }
-  }
+    }
 
-// Chamando a função main()
+
+function header(txt){
+    console.log('='.repeat(txt.length))
+    console.log(txt)
+    console.log('='.repeat(txt.length))
+
+}
+
 main()
