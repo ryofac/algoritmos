@@ -25,6 +25,6 @@
 * Utiliza a biblioteca "chalk" (mostrar cores no terminal)
 > Os arquivos calculadora_agua.js e calculadora_batimentos.js também estão presentes na lista 2
 
-##Sorteio:
+## Sorteio:
 * Mini projeto feito para sortear alunos nas provas, será implementado conforme o avanço no entendimento do curso
 
