@@ -7,7 +7,7 @@ import chalk from "chalk" // npm install chalk
 
 import { question } from "readline-sync"
 
-function main(){
+function main() {
     // Descrição:
     header(`CALCULADORA DE ${azul('ÁGUA')}`)
 
@@ -21,20 +21,20 @@ function main(){
     // Saída:
     header(`PESO = ${azul(pes) + azul('Kg')}`)
     print(`O valor de água diário recomendado para atividades físicas ${verde('moderadas ')}é de ${verde(agua_moderado)} L`)
-    print(`O valor de água diário recomendado para atividades físicas ${vermelho('intensas' )} é de ${vermelho(agua_intenso)} L`)
+    print(`O valor de água diário recomendado para atividades físicas ${vermelho('intensas')} é de ${vermelho(agua_intenso)} L`)
     header('Volte Sempre!')
-    
+
 }
 
 
 // Exercício intenso ou moderado:
-function moderado(peso){
+function moderado(peso) {
     var quantidade_agua = (peso / 1000) * 35
     return quantidade_agua
 }
 
 
-function intenso(peso){
+function intenso(peso) {
     var quantidade_agua = (peso / 1000) * 45
     return quantidade_agua
 
@@ -42,7 +42,7 @@ function intenso(peso){
 
 
 // Um cabeçalho que recebe como parâmetros um texto
-function header(txt){
+function header(txt) {
     // Fazendo um cabeçalho proporcional ao tamanho do texto
     var tamanho = txt.length
     console.log('='.repeat(tamanho))
@@ -52,39 +52,39 @@ function header(txt){
 
 
 // Função para receber os dados
-function input(valor){
+function input(valor) {
     return question(valor)
 }
- 
+
 //Função para saída de dados
-function print(valor){
+function print(valor) {
     return console.log(valor)
-    
+
 }
 
 
 // Função que arredonda os valores fornecidos em duas casas decimais
-function arredondar(numero){
+function arredondar(numero) {
     var arredondamento = numero.toFixed(2)
     return arredondamento
 }
 
 
 // Função que fornecerá a cor vermelha no terminal
-function vermelho(txt){
-    const resultado = chalk.red(txt) 
+function vermelho(txt) {
+    const resultado = chalk.red(txt)
     return resultado // Retorna o texto em vermelho
 }
 
 
 // Função que fornecerá a cor verde no terminal
-function verde(txt){
-    const resultado = chalk.green(txt) 
+function verde(txt) {
+    const resultado = chalk.green(txt)
     return resultado // Retorna o texto em verde
 }
 
 // Função que fornecerá a cor azul no terminal
-function azul(txt){
+function azul(txt) {
     return chalk.blueBright(txt)
 }
 
