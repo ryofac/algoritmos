@@ -1,14 +1,14 @@
-import sys
-sys.path.append("./utils")
-from utils import *
+from io_utils import *
+from math_utils import contar_ate
 
 def main():
-    title('Contador de números')
-    num = pedir_inteiro("Me diga um número:\n> ", tipo= '+')
+    title('Contador de números', upper=True)
+    num = pedir_inteiro("Até onde é pra contar? \n> ", tipo= '+')
 
     contar_ate(num)
 
-    printslow('FIM!')
+
+    title('FIM!', estrelado= True)
 
 
 main()

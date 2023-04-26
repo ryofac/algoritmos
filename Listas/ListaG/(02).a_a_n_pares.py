@@ -1,4 +1,4 @@
-from utils import *
+from io_utils import *
 def main():
     title('Sequência de Pares')
     num = pedir_inteiro(tipo= "+")

@@ -1,12 +1,11 @@
 from time import sleep
 
-
 def pedir_inteiro(label= 'Me diga um número inteiro:\n> ', tipo = None):
     if not tipo:
         try:
             num = int(input(label))
         except:
-            print('Não é um número!')
+            print('Não é um inteiro!')
             while not num:
                 num = int(input(label))
         return num
@@ -24,10 +23,11 @@ def pedir_inteiro(label= 'Me diga um número inteiro:\n> ', tipo = None):
         return num
 
 
-def printslow(palavra): # Escrever o texto lentamente(
-    for letra in palavra:
-        print(letra, end='', flush=True)
-        sleep(0.05)
+def printslow(*palavras, speed = 0.05): # Escrever o texto lentamente
+    for elemento in palavras:
+        for letra in elemento:
+            print(letra, end='', flush=True)
+            sleep(speed)
     print('\n')
     
 def title(txt, center = True, estrelado = False, upper=False):
@@ -37,7 +37,7 @@ def title(txt, center = True, estrelado = False, upper=False):
         print('=' * (len(txt)))
         print(txt)
         print('=' * len(txt))
-    if estrelado:
+    elif estrelado:
         print('*' * (len(txt) + 2))
         print(txt.center(len(txt) + 2))
         print('*' * (len(txt) + 2))
@@ -45,11 +45,12 @@ def title(txt, center = True, estrelado = False, upper=False):
         print('=' * (len(txt) + 2))
         print(txt.center(len(txt) + 2))
         print('=' * (len(txt) + 2))
+
+if __name__ == "__main__":
+    title('io_utils', upper=True)
+    printslow('Olá, sou o módulo extra para as funções de entrada e saída do Python!')
+    printslow('Eu não consigo rodar sozinho, para me testar, vá em algum módulo.py em que eu esteja presente!')
+
         
 
 
-def contar_ate(num):
-    contador = 0
-    while contador != num:
-        contador += 1
-        print(contador)

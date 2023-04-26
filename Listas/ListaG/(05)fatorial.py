@@ -1,8 +1,9 @@
-from utils import *
+from io_utils import *
+from math_utils import *
 def main():
     title('Máquina de Fatorial')
     num = pedir_inteiro(tipo="+")
-    num_fatorial = factorial(num)
+    num_fatorial = fatorial(num)
     
     printslow(f'{num}! = {num_fatorial}')
     
@@ -11,12 +12,4 @@ def main():
 #         return 1
 #     return num * factorial(num-1)
 
-def factorial(num):
-    multiplicador = 1
-    contador = 0
-    while contador < num:
-        contador += 1
-        multiplicador *= contador
-    return multiplicador
-        
 main()

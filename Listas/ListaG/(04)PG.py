@@ -1,6 +1,6 @@
-from utils import *
+from io_utils import *
 def main():
-    title('Formador de Progração Geométrica')
+    title('Formador de Progressão Geométrica')
     a0 = pedir_inteiro("Me diga o número inicial da PG:\n> ")
 
     limite = pedir_inteiro("Quantos termos você quer para essa PG: ", tipo="+")

@@ -1,1 +1,6 @@
-// Arquivo que é usado como treinamento nas aulas: 
+import { question } from "readline-sync"
+function mostrar_texto(txt){
+    console.log(txt)
+}
+
+mostrar_texto("Qualquer \nCoisa")

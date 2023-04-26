@@ -1,9 +1,9 @@
-from utils import *
+from io_utils import *
 from os import system
 
 def main():
     label = 'Gerador de Tabuada'
-    title(label)
+    title(label, upper=True)
     numero_inicial = 1
     contador_parcial = 0
     while numero_inicial <= 10:
@@ -14,6 +14,7 @@ def main():
             print('=' * len(label))
             enter = input('...<Enter>')
             system("clear")
+            print('=' * len(label))
             contador_parcial = 0
             numero_inicial += 1
     title('Obrigado por usar o tabuada.py!', estrelado= True)
