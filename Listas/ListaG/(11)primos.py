@@ -2,6 +2,7 @@ from io_utils import *
 from math_utils import *
 
 def main():
+    clear_screen()
     title('Buscador de números primos', upper= True)
 
     printslow('Digite os limites do intervalo...')

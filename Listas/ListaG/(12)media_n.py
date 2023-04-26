@@ -1,12 +1,11 @@
 from io_utils import *
-from random import choice
 import os
 
 frases_legais_para_pedir_inteiro = ['Ok, me diga outro número: ', 'Passe mais um número: ',
                                     'Diga um número inteiro positivo: ', 'Diga outro: ']
 
 def main():
-    os.system('clear')
+    clear_screen()
     title('Calcular Média Aritmética', upper=True)   
    
     # Pedir N que será o tamanho da lista:

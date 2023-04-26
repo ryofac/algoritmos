@@ -2,6 +2,7 @@ from io_utils import *
 from os import system
 
 def main():
+    clear_screen()
     label = 'Gerador de Tabuada'
     title(label, upper=True)
     numero_inicial = 1

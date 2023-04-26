@@ -5,6 +5,7 @@ frases_legais_para_pedir_inteiro = ['Ok, me diga outro: ', 'Passe mais um númer
                                     'Digite mais um: ', 'Digite outro: ']
 
 def main():
+    clear_screen()
     title('Check Maior ou Menor', upper=True)
     quantidade_n = pedir_inteiro('Quantos termos você quer na lista?: ')
     numero_atual = pedir_inteiro('Ok, me diga o primeiro número da lista: ')
