@@ -14,9 +14,8 @@ def main():
         inicial += 1
         ao_quadrado = (inicial) ** 2
         if ao_quadrado > num_verificar:
-            break
-    print(ao_quadrado)
-        
+            ao_quadrado = (inicial-1) ** 2
+            break        
         
     title(f'O quadrado mais próximo achado foi {ao_quadrado}')
 
