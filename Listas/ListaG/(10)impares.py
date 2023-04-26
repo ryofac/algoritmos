@@ -2,10 +2,11 @@ from io_utils import *
 from math_utils import eh_par
 
 def main():
-    title('Buscador de números ímpares', upper= True)
+    label =  'Buscador de números ímpares'
+    title(label, upper= True)
 
     printslow('Digite os limites do intervalo...')
-    limite_inferior = pedir_inteiro('... Início: ')
+    limite_inferior = pedir_inteiro('... Início: ',tipo= "+")
     limite_superior = pedir_inteiro('... Final: ')
     
     if limite_superior < limite_inferior or limite_inferior == limite_superior: # check_interval
@@ -19,6 +20,6 @@ def main():
     while limite_inferior <= limite_superior:
         limite_inferior += 1 # O Limite "cresce" até chegar ao valor do limite superior
         if not(eh_par(limite_inferior)):
-            print(f'>  {limite_inferior}')
+            print(f'-->   {limite_inferior}'.center(len(label)))
 
 main()

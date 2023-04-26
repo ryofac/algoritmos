@@ -1,4 +1,5 @@
 from time import sleep
+from os import system
 
 def pedir_inteiro(label= 'Me diga um número inteiro:\n> ', tipo = None):
     if not tipo:
@@ -45,6 +46,10 @@ def title(txt, center = True, estrelado = False, upper=False):
         print('=' * (len(txt) + 2))
         print(txt.center(len(txt) + 2))
         print('=' * (len(txt) + 2))
+    
+
+def clear_screen():
+    system('clear')
 
 if __name__ == "__main__":
     title('io_utils', upper=True)
