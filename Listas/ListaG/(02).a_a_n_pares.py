@@ -1,5 +1,6 @@
 from io_utils import *
 def main():
+    clear_screen()
     title('Sequência de Pares')
     num = pedir_inteiro(tipo= "+")
     contador = 0

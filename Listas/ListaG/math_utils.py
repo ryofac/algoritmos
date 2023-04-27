@@ -6,8 +6,9 @@ def contar_ate(num):
     contador = 0
     while contador != num:
         contador += 1
-        io.printslow(f'...{contador}', speed= 0.5)
-        system("clear")
+        io.printslow(f'...{contador}', speed= 0.2, inline= True)
+        if contador % 10 == 0:
+            print()
 
 def fatorial(num):
     multiplicador = 1

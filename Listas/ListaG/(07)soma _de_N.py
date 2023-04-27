@@ -1,5 +1,6 @@
 from io_utils import *
 def main():
+    clear_screen()
     title('Somador de Números')
     numeroN = pedir_inteiro("Me diga um número natural: ", tipo="+")
     numero = 0

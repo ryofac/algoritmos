@@ -23,13 +23,14 @@ def pedir_inteiro(label= 'Me diga um número inteiro:\n> ', tipo = None):
             num = int(input(label))
         return num
 
-
-def printslow(*palavras, speed = 0.05): # Escrever o texto lentamente
+ # Escrever o texto lentamente (quando -speed, mais rápido)
+def printslow(*palavras, speed = 0.05, inline = False):
     for elemento in palavras:
         for letra in elemento:
             print(letra, end='', flush=True)
             sleep(speed)
-    print('\n')
+    if not inline:
+        print('\n')
     
 def title(txt, center = True, estrelado = False, upper=False):
     if upper:

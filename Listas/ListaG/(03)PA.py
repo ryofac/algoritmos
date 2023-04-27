@@ -2,6 +2,7 @@
 # Aritmética que tem por valor inicial A0 e razão R.
 from io_utils import *
 def main():
+    clear_screen()
     title('Formador de Progressão Aritmética')
     a0 = pedir_inteiro("Me diga o número inicial da PA:\n> ")
 

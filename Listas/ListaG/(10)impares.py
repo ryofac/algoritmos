@@ -2,6 +2,7 @@ from io_utils import *
 from math_utils import eh_par
 
 def main():
+    clear_screen()
     label =  'Buscador de números ímpares'
     title(label, upper= True)
 
