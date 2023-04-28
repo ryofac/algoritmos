@@ -24,8 +24,31 @@ def pedir_inteiro(label= 'Me diga um número inteiro:\n> ', tipo = None):
             num = int(input(label))
         return num
 
+def pedir_float(label ='Me diga um número: ', tipo = None):
+    if not tipo:
+        try:
+            num = float(input(label))
+        except:
+            print('Não é um número!')
+            while not num:
+                num = float(input(label))
+        return num
+    if tipo == '+':
+        num = float(input(label))
+        while not num > 0:
+            print('Digite um número positivo!')
+            num = float(input(label))
+        return num
+    if tipo == '-':
+        num = float(input(label))
+        while not num <= 0:
+            print('Digite um número negativo!')
+            num = float(input(label))
+        return num
+    
+
  # Escrever o texto lentamente (quando -speed, mais rápido)
-def printslow(*palavras, speed = 0.05, inline = False):
+def printslow(*palavras, speed = 0.04, inline = False):
     for elemento in palavras:
         for letra in elemento:
             print(letra, end='', flush=True)
@@ -52,6 +75,7 @@ def title(txt, center = True, estrelado = False, upper=False):
 
 def clear_screen():
     system('clear')
+
 
 if __name__ == "__main__":
     title('io_utils', upper=True)

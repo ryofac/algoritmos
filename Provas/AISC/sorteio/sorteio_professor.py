@@ -1,6 +1,6 @@
 from random import *
 def main():
-    arquivo = open("/home/ryan/Downloads/sorteio/alunos_def.txt")
+    arquivo = open("./alunos.txt")
     alunos_def = arquivo.readlines()
     shuffle(alunos_def)
 

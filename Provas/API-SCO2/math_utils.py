@@ -43,7 +43,7 @@ def fib(num): # Utilizando o conceito de recursividade
     
     
 def porcentagem_de(num):
-    return num /100
+    return num / 100
 
 
 if __name__ == "__main__":
