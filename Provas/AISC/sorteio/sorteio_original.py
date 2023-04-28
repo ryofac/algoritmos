@@ -2,7 +2,7 @@
 # O código recebe uma lista e sorteia em grupos as pessoas da lista recebida
 # Feito por Ryan e Lívia
 from random import *
-arquivo = open("/home/ryan/Algoritmos/AISC/sorteio/alunos.txt") # coloca o diretório dos dados
+arquivo = open("/home/ryan/Algoritmos/Provas/AISC/sorteio/alunos.txt") # coloca o diretório dos dados
 alunos_def = list(map(str.strip, arquivo.readlines()))
 
 def main():
