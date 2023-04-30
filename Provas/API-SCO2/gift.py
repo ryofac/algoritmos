@@ -11,7 +11,8 @@ def main():
     quantidade_clientes = 0
     valor_compras_total = 0
     valor_cashback_clientes = 0
-    
+    maior_cash = float('-inf')
+    menor_cash = float('inf')    
     
     while True:
         clear_screen()
@@ -51,14 +52,20 @@ def main():
             valor_cashback_clientes += cashback # soma os cashbacks de todos e armazena 
             valor_compras_total += valor_compra_atual # Soma a quantidade de compras totais no dia
             
-    
+        # Checagem do maior_menor:
+        if valor_cashback_total > maior_cash:
+            maior_cash = valor_cashback_total
+        if valor_cashback_total < menor_cash:
+            menor_cash = valor_cashback_total 
+
         clear_screen()
         mostrarViaCliente(nome_cliente, num_compras, valor_compra_total, valor_cashback_total)
         input('Próximo!...<Enter>')
         clear_screen()
     
     # Fim do loop!
-    mostrarFaturamento(quantidade_clientes, valor_compras_total, valor_cashback_clientes)
+    media_cashback = calcular_media(valor_cashback_total,  num_compras)
+    mostrarFaturamento(quantidade_clientes, valor_compras_total, valor_cashback_clientes, media_cashback, maior_cash, menor_cash)
 
 
 def calcularCashback(valor_compra_atual):
@@ -79,15 +86,24 @@ def mostrarViaCliente(nome, num_compras, valor_compras, valor_cashback):
     gerar_recomendação(valor_cashback + valor_compras + num_compras + len(nome))
     print(f'QUANTIDADE TOTAL DE PEDIDOS: {num_compras}'.center(screen_size))
     print(f'VALOR PEDIDOS: R${valor_compras:.2f}'.center(screen_size))
-    print(f' >> VALOR CASHBACK: R${valor_cashback:.2f}'.center(screen_size))
-    title(f'VALOR TOTAL (com "descontos" ): R${valor_compras - valor_cashback:.2f}'.center(screen_size), estrelado= True)
+    title(f' >> VALOR CASHBACK: R${valor_cashback:.2f}'.center(screen_size), estrelado= True)
     
 
-def mostrarFaturamento(qnt_clientes, total_de_compras, total_cashback):
-    print(f'QUANTIDADE TOTAL DE CLIENTES HOJE: {qnt_clientes}'.center(screen_size))
-    print(f'>> VALOR TOTAL DE COMPRAS: R${total_de_compras:.2f}'.center(screen_size))
-    print(f'>> VALOR TOTAL DE CASHBACKS: R${total_cashback:.2f}'.center(screen_size))
-    title(f'FATURAMENTO FINAL: R${total_de_compras - total_cashback:.2f}'.center(screen_size),estrelado= True )
+def mostrarFaturamento(qnt_clientes, total_de_compras, total_cashback, media_cash, maior_cash, menor_cash):
+    print(f'QUANTIDADE TOTAL DE CLIENTES HOJE: {qnt_clientes}\n'.center(screen_size))
+    print(f'>> VALOR TOTAL DE COMPRAS: R${total_de_compras:.2f}\n'.center(screen_size))
+    print(f'>> VALOR TOTAL DE CASHBACKS: R${total_cashback:.2f}\n'.center(screen_size))
+    print(f'\t>> VALOR MÉDIO: R${media_cash:.2f}'.center(screen_size))
+    print(f'\t>> MAIOR VALOR: R${maior_cash:.2f}'.center(screen_size))
+    print(f'\t>> MENOR VALOR: R${menor_cash:.2f}'.center(screen_size))
+
+    title(f'FATURAMENTO FINAL: R${total_de_compras:.2f} => {calcular_porcento_do_valor(total_cashback, total_de_compras):.2f}% de CASHBACK'.center(screen_size),estrelado= True )
+
+def calcular_porcento_do_valor(valor, total):
+    return (valor / total) * 100
+
+def calcular_media(somatorio, total):
+    return somatorio / total
 
 
 def gerar_recomendação(randomidade):

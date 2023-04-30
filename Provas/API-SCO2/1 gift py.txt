@@ -1,0 +1,17 @@
+1. gift.py:
+
+>> Até 250 > Cashback = 5%
+>> 250 -> 500 -> Cashback = 7%
+>> 500 -> 750 -> Cashback = 8%
+>> Acima de 750 -> Cashback = 8% + 25% * valor_excedente
+
+> Entrada:
+ >> Nome Cliente, N compras cliente
+ 
+> Saída:
+ >> Faturamento total (soma das vendas)
+ 	>> O quanto de cashback (soma dos cashbacks) => Em reais e 			percentual
+ >> Percentual investido de caschback pela loja
+ 
+ ## Sugestão para utils:
+Função pedir texto
