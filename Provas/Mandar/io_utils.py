@@ -48,15 +48,7 @@ def pedir_float(label ='Me diga um número: ', tipo = None):
             print('Digite um número negativo!')
             num = float(input(label))
         return num
-
-# Imprime uma barra de loading na tela
-def barra_loading(valor_atual, valor_final):
-    porcentagem = (valor_atual / valor_final) * 100
-    multiplicador = int(porcentagem // 10)
-    total = ' ' * 10
-    progresso = '#' * multiplicador
-    quanto_falta = ' ' * (len(total) - len(progresso))
-    return (f'[{progresso}{quanto_falta}] ({porcentagem:.2f}%)\r')
+    
 
  # Escrever o texto lentamente (quando -speed, mais rápido)
 def printslow(*palavras, speed = 0.04, inline = False):
@@ -87,7 +79,7 @@ def centralize(txt):
     return txt.center(obter_tamanho_tela() - 2)
 
 def printcenter(txt):
-    print(centralize(txt))
+    print (centralize(txt))
 
 def clear_screen():
     system('clear')
