@@ -24,7 +24,6 @@ def main():
     
     while not parcela_aprovada(valor_parcela, renda_mensal):
         print('Seu empréstimo não foi aprovado devido a sua renda! ')
-        prazo = pedir_inteiro(f'O Valor de meses inválido: \n>> ')
         renda_mensal = pedir_inteiro('Digite novamente sua renda\n >> R$', tipo='+')
         
     gerar_relatorio_final(renda_mensal, valor_emprestimo, iof, juros, valor_final, valor_parcela, meses_dias(prazo))

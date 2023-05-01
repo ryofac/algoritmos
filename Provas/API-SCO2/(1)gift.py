@@ -6,11 +6,11 @@ screen_size = get_terminal_size().columns - 2 # Obter tamanho do terminal
 
 # A FLAG É NOME_CLIENTE = ADMIN
 def main():
-    
     # Inicializando Contadores Globais!
     quantidade_clientes = 0
     valor_compras_total = 0
     valor_cashback_clientes = 0
+    quantidade_compras_totais = 0
     maior_cash = float('-inf')
     menor_cash = float('inf')    
     
@@ -22,7 +22,7 @@ def main():
         printslow('> Olá, qual é o seu nome? ')
         nome_cliente = str(input(' >> '))
         
-        if nome_cliente == 'admin': # Flag (Condição de Continuidade)
+        if nome_cliente.lower().strip()== 'admin': # Flag (Condição de Continuidade)
             clear_screen()
             title('Loja Fechada'.center(screen_size), upper=True)
             break
@@ -31,10 +31,11 @@ def main():
         
         printslow(f'\n> Olá {nome_cliente}!, que !(ruim) te ver por aqui hoje!')
         num_compras = pedir_inteiro('> Digite o total de compras no carrinho\n >> ', tipo="+")
-        
         while muita_compra(num_compras):
             printslow('> Desculpe, !(aceitamos) compras por pessoa física com mais de 10 produtos!')
-            num_compras = pedir_inteiro('> Digite um número válido  de compras\n >> ', tipo="+")
+            num_compras = pedir_inteiro('> Digite um número válido de compras\n >> ', tipo="+")
+        
+        quantidade_compras_totais += num_compras
         
         # Inicializando Contadores Locais!
         compra_atual = 0
@@ -44,7 +45,7 @@ def main():
         while compra_atual < num_compras:
             clear_screen()
             compra_atual += 1
-            title(f'({compra_atual})/({num_compras})')
+            printcenter(f'-- ({compra_atual})/({num_compras}) -- ')
             valor_compra_atual = pedir_float('> Digite o valor do seu pedido: R$', tipo='+')
             cashback = calcularCashback(valor_compra_atual)
             valor_compra_total += valor_compra_atual
@@ -53,32 +54,34 @@ def main():
             valor_compras_total += valor_compra_atual # Soma a quantidade de compras totais no dia
             
         # Checagem do maior_menor:
+        print(f'CASHBACK TOTAL: {valor_cashback_total}')
         if valor_cashback_total > maior_cash:
             maior_cash = valor_cashback_total
         if valor_cashback_total < menor_cash:
             menor_cash = valor_cashback_total 
-
+            
         clear_screen()
         mostrarViaCliente(nome_cliente, num_compras, valor_compra_total, valor_cashback_total)
         input('Próximo!...<Enter>')
         clear_screen()
-    
-    # Fim do loop!
-    media_cashback = calcular_media(valor_cashback_total,  num_compras)
-    mostrarFaturamento(quantidade_clientes, valor_compras_total, valor_cashback_clientes, media_cashback, maior_cash, menor_cash)
+        
+    if nome_cliente == 'admin' and quantidade_compras_totais > 0:
+        # Fim do loop!
+        media_cashback = calcular_media(valor_cashback_total,  num_compras)
+        mostrarFaturamento(quantidade_clientes,quantidade_compras_totais, valor_compras_total, valor_cashback_clientes, media_cashback, maior_cash, menor_cash)
+    else:
+        printcenter('-- SEM COMPRAS COMPUTADAS --')
 
 
 def calcularCashback(valor_compra_atual):
     if valor_compra_atual <= 250:
         return valor_compra_atual * porcentagem_de(5)
     elif valor_compra_atual <= 500:
-        return valor_compra_atual * porcentagem_de(7)
+        return (valor_compra_atual - 250) * porcentagem_de(7) + 250 * porcentagem_de(5)
     elif valor_compra_atual <= 750:
-        return valor_compra_atual * porcentagem_de(8)
+        return (valor_compra_atual - 500 )+ 250 * porcentagem_de(8) + 250 * porcentagem_de(5)
     else:
-        valor_excedente = valor_compra_atual - 750
-        return (750 * porcentagem_de(8)) + (valor_excedente * porcentagem_de(25))
-    
+        return (valor_compra_atual - 750)+ 250 * porcentagem_de(8) + 250 * porcentagem_de(7) + 250 * porcentagem_de(5)
     
 def mostrarViaCliente(nome, num_compras, valor_compras, valor_cashback):
     title('Via do Cliente'.center(screen_size), upper= True)
@@ -89,14 +92,14 @@ def mostrarViaCliente(nome, num_compras, valor_compras, valor_cashback):
     title(f' >> VALOR CASHBACK: R${valor_cashback:.2f}'.center(screen_size), estrelado= True)
     
 
-def mostrarFaturamento(qnt_clientes, total_de_compras, total_cashback, media_cash, maior_cash, menor_cash):
-    print(f'QUANTIDADE TOTAL DE CLIENTES HOJE: {qnt_clientes}\n'.center(screen_size))
+def mostrarFaturamento(qnt_clientes, qnt_compras, total_de_compras, total_cashback, media_cash, maior_cash, menor_cash):
+    print(f'QUANTIDADE TOTAL DE CLIENTES HOJE: {qnt_clientes}'.center(screen_size))
+    print(f'QUANTIDADE TOTAL DE COMPRAS HOJE: {qnt_compras}'.center(screen_size))
     print(f'>> VALOR TOTAL DE COMPRAS: R${total_de_compras:.2f}\n'.center(screen_size))
     print(f'>> VALOR TOTAL DE CASHBACKS: R${total_cashback:.2f}\n'.center(screen_size))
     print(f'\t>> VALOR MÉDIO: R${media_cash:.2f}'.center(screen_size))
     print(f'\t>> MAIOR VALOR: R${maior_cash:.2f}'.center(screen_size))
     print(f'\t>> MENOR VALOR: R${menor_cash:.2f}'.center(screen_size))
-
     title(f'FATURAMENTO FINAL: R${total_de_compras:.2f} => {calcular_porcento_do_valor(total_cashback, total_de_compras):.2f}% de CASHBACK'.center(screen_size),estrelado= True )
 
 def calcular_porcento_do_valor(valor, total):
