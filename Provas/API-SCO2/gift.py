@@ -77,7 +77,7 @@ def calcularCashback(valor_compra_atual):
         return valor_compra_atual * porcentagem_de(8)
     else:
         valor_excedente = valor_compra_atual - 750
-        return (valor_compra_atual * porcentagem_de(8)) + (valor_excedente * porcentagem_de(25))
+        return (750 * porcentagem_de(8)) + (valor_excedente * porcentagem_de(25))
     
     
 def mostrarViaCliente(nome, num_compras, valor_compras, valor_cashback):
