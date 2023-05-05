@@ -17,8 +17,15 @@ from math_utils import *
 
 
 def main():
-    consumo_anterior = pedir_inteiro('Qual o consumo em KhW da sua residência antes? \n >> ')
-    consumo_atual = pedir_inteiro('Qual o consumo em KhW da sua residência atual? \n >> ')
+    clear_screen()
+    printcenter('-- EquatoriMAL energia -- '.upper())
+    printcenter('Cálculo de Tarifa')
+    consumo_anterior = pedir_inteiro('LEITURA ANTERIOR (KWH): \n >> ')
+    consumo_atual = pedir_inteiro('LEITURA ATUAL (KWH): \n >> ')
+    while consumo_anterior > consumo_atual:
+        printcenter('Tente fazer a leitura novamente! (Err: Anterior maior que atual)')
+        consumo_anterior = pedir_inteiro('LEITURA ANTERIOR: \n >> ')
+        consumo_atual = pedir_inteiro('LEITURA ATUAL:\n >> ')
     consumo = consumo_atual - consumo_anterior
     tarifa = calcular_tarifa(consumo)
     bandeira = calcular_bandeira(consumo)
@@ -29,19 +36,20 @@ def main():
     
     
     
+    
 
 def resultado(consumo, tarifa, bandeira, icms, pis, taxa_ilum):
     printcenter('=' * 30)
     printcenter('EquatoriMAL')
     printcenter('=' * 30)
-    printcenter(f'Consumo {consumo:.2f} KWh')
-    printcenter(f'Valor Faturado R$ {tarifa:.2f}')
-    printcenter(f'Bandeira R$ {bandeira:.2f} x {consumo // 100}')
-    printcenter(f'ICMS R$ {icms:.2f}')
+    printcenter(f'Consumo: {consumo:.2f} KWh')
+    printcenter(f'Valor Faturado R${tarifa:.2f}')
+    printcenter(f'Bandeira R${bandeira:.2f} => R$8.00 x {consumo // 100}')
+    printcenter(f'ICMS R${icms:.2f}')
     printcenter(f'PIS/CONFIS R${pis:.2f}')
     printcenter(f'Taxa Iluminação R$ {taxa_ilum:.2f}')
     printcenter('=' * 30)
-    printcenter(f'VALOR TOTAL: R${tarifa + bandeira + icms + pis + taxa_ilum}')
+    printcenter(f'VALOR TOTAL: R${tarifa + bandeira + icms + pis + taxa_ilum:.2f}')
     printcenter('=' * 30)
     printcenter(f'PAGAMENTO(PIX): 86995638334')
     printcenter('=' * 30)
