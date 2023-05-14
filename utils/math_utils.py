@@ -138,8 +138,6 @@ def meses_dias(meses):
 
 
 
-
-
  # === Intervalos ===
  
 def valor_maximo_de(*valores: int):
