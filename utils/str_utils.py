@@ -159,8 +159,8 @@ def contem_substring(texto:str, substring:str, ignore_case:bool = False) -> bool
                 return False
         if memoria == substring:
             return True
-        memoria = ''
-    return False
+        else:
+            memoria = ''
         
         
     
