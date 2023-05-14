@@ -20,6 +20,7 @@ def juntar(textos: list[str], sep:str = ' ') -> str:
     stringzona = stringzona[:-obter_tamanho(sep)]
     return stringzona
 
+
 def contar_caractere(texto:str, caractere:str, ignore_case: bool = False) -> int:
     if obter_tamanho(caractere) > 1:
         return 'Caracteres somente com 1 de tamanho!'
@@ -34,6 +35,7 @@ def contar_caractere(texto:str, caractere:str, ignore_case: bool = False) -> int
         if char == caractere:
             cont_caractere += 1
     return cont_caractere
+
 
 def contem_caracter(texto: str, caracter_analisado: str, ignore_case: bool = False) -> bool:
     return contar_caractere(texto, caracter_analisado, ignore_case ) > 0
@@ -55,6 +57,7 @@ def substituir_caracter(texto:str, caracter_substituir: str, caracter_substituto
         nova_string += char
     return nova_string
 
+
 def remover_caracter(texto: str, caracter_remover: str, ignore_case: bool = False) -> str:
     nova_string = ''
     for char in texto:
@@ -68,8 +71,10 @@ def remover_caracter(texto: str, caracter_remover: str, ignore_case: bool = Fals
             nova_string += char      
     return nova_string
 
+
 def usa_apenas(texto: str, caracter_analisar: str, ignore_case: bool = False) -> bool:
     return contar_caractere(texto, caracter_analisar, ignore_case) == 1
+
 
 def nao_usa(texto:str, caracter_analisar:str, ignore_case:bool = False) -> bool:
     return contar_caractere(texto, caracter_analisar, ignore_case) == 0
@@ -78,24 +83,30 @@ def nao_usa(texto:str, caracter_analisar:str, ignore_case:bool = False) -> bool:
 def tirar_espaco(texto) -> str:
     remover_caracter(texto, ' ')
     
+    
 def eh_letra(char: str) -> bool:
     return eh_upper_char(char) or eh_lower_char(char)
+
 
 def eh_upper_char(char: str) -> bool:
     return 65 <= ord(char) <= 90
 
+
 def eh_lower_char(char: str) -> bool:
     return 97 <= ord(char)<= 122
+
 
 def lowercase_char(char: str) -> str:
     if not eh_lower_char(char):
         return chr(ord(char) + 32)
     return char
 
+
 def uppercase_char(char: str) -> str:
     if not eh_upper_char(char):
         return chr(ord(char - 32))
     return char
+
 
 def para_caixa_alta(texto:str) -> str:
     nova_string = ''
@@ -106,6 +117,7 @@ def para_caixa_alta(texto:str) -> str:
             nova_string += uppercase_char(char)
     return nova_string
         
+        
 def para_caixa_baixa(texto:str) -> str:
     nova_sting = ''
     for char in texto:
@@ -114,6 +126,7 @@ def para_caixa_baixa(texto:str) -> str:
         else:
             nova_sting += lowercase_char(char)
     return nova_sting
+
 
 def substring(texto:str, inicio:int, fim:int) -> str:
     nova_string = ''
@@ -131,6 +144,7 @@ def substring_tamanho(texto:str, inicio:int, tamanho:int):
         nova_string += texto[final]
         final += 1
     return nova_string
+
 
 def contem_substring(texto:str, substring:str, ignore_case:bool = False) -> bool:
     memoria = ''
