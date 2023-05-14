@@ -1,0 +1,6 @@
+import math
+contador = 0
+while True:
+    contador += 30
+    print((int(math.sin(contador) * 3)) * "x")
+
