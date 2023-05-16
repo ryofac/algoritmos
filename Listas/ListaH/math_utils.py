@@ -1,4 +1,4 @@
-import io_utils as io
+import Listas.ListaH.io_utils as io
 
 # ===== Matematica financeira ====
 def calcular_Juros(emprestimo: float, taxa: float, prazo: float):
