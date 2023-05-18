@@ -1,6 +1,3 @@
-# Faltando implemetações para substrings:
-
-
 def obter_tamanho(texto: str) -> int:
     tamanho = 0
     for caracter in str(texto):
@@ -161,6 +158,7 @@ def contem_substring(texto:str, substring:str, ignore_case:bool = False) -> bool
             return True
         else:
             memoria = ''
+        
         
         
     

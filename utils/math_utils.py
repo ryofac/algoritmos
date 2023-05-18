@@ -44,6 +44,15 @@ def distancia_entre_pontos(x1: float, y1: float, x2:float, y2:float):
 
 
 # === Utilidades ===
+
+def calcular_media(*valores : list[float]) -> float:
+    soma = 0
+    quantidade = 0
+    for item in valores:
+        soma += item
+        quantidade += 1
+    return soma / quantidade
+        
 def fib(termo:int): # Fibonnaci recursivo
     if termo == 1 or termo == 2:
         return 1
