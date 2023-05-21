@@ -168,3 +168,17 @@ def contar_palavras(texto:str) -> int:
             lista_palavras.append(palavra)
             palavra = ''
     return obter_tamanho(lista_palavras)
+    
+def quebrar_palavras(texto: str) -> list[str]:
+    quebrado = []
+    palavra = ''
+    for i in range(len(texto)):
+        if texto[i] == ' ' or i == len(texto):
+            quebrado.append(palavra)
+            palavra = ''
+            continue
+        palavra += texto[i]
+       
+    return quebrado
+        
+        
