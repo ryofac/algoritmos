@@ -167,10 +167,6 @@ def valor_minimo_de(*valores: int):
 
 
 
-    
-
-
-
 if __name__ == "__main__":
     io.title('MATH UTILS')
     io.printslow('Olá, sou o módulo extra para o facilitamento de algumas ações matemáticas!')

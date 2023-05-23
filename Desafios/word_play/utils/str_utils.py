@@ -158,13 +158,15 @@ def contem_substring(texto:str, substring:str, ignore_case:bool = False) -> bool
             return True
         else:
             memoria = ''
-            
-def contar_palavras(texto:str) -> int:
-    lista_palavras = []
-    palavra = ''
-    for char in texto:
-        palavra += char
-        if char == '':
-            lista_palavras.append(palavra)
-            palavra = ''
-    return obter_tamanho(lista_palavras)
+
+def mmap(func, iterable):
+    return_list = []
+    for item in iterable:
+        value = func(item)
+        return_list.append(value)
+    return return_list
+        
+        
+        
+        
+    

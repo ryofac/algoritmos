@@ -5,8 +5,6 @@ def main():
     while True:
         amplitude = math.cos(numero) * 10
         numero += 1
-        print('a' * (int(amplitude) + 10),  flush = True)
-        
-            
+        print('a' * (int(amplitude) + 10), flush = True)
             
 main()
