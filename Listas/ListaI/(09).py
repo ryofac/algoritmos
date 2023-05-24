@@ -43,6 +43,5 @@ def main():
     print('--> O clube que ganhou foi o:', 'A' if soma_clube_a > soma_clube_b else 'B', '<--')
     
 
-    def pontuacaoEquipe():
         
 main()
