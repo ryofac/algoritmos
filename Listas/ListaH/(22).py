@@ -1,6 +1,7 @@
 def main():
     num_bois = int(input)
-    num_identificacao = input('Qual o número de indentificação desse querido? ')7
+    num_identificacao = input('Qual o número de indentificação desse querido? ')
+    
     
     
     
