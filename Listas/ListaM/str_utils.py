@@ -10,6 +10,26 @@ def quebrar(texto: str) -> list[str]:
         quebrado.append(char)
     return quebrado
 
+def quebrar_palavras(texto: str) -> list[str]:
+    quebrado = []
+    palavra = ''
+    for i in range(len(texto)):
+        if texto[i] == ' ':
+            quebrado.append(palavra)
+            palavra = ''
+            continue
+        if i == len(texto):
+            quebrado.append(palavra)
+            
+        palavra += texto[i]
+    quebrado.append(palavra)
+       
+    return quebrado
+        
+        
+    
+        
+
 def juntar(textos: list[str], sep:str = ' ') -> str:
     stringzona = ''
     for texto in textos:
@@ -78,7 +98,7 @@ def nao_usa(texto:str, caracter_analisar:str, ignore_case:bool = False) -> bool:
         
 
 def tirar_espaco(texto) -> str:
-    remover_caracter(texto, ' ')
+    return remover_caracter(texto, ' ')
     
     
 def eh_letra(char: str) -> bool:
@@ -91,6 +111,17 @@ def eh_upper_char(char: str) -> bool:
 
 def eh_lower_char(char: str) -> bool:
     return 97 <= ord(char)<= 122
+
+def eh_lower(str:str) -> bool:
+    for char in str:
+        if eh_upper_char(char):
+            return False
+
+def eh_upper(str:str) -> bool:
+    for char in str:
+        if eh_lower_char(char):
+            return False
+
 
 
 def lowercase_char(char: str) -> str:
@@ -164,7 +195,38 @@ def contar_palavras(texto:str) -> int:
     palavra = ''
     for char in texto:
         palavra += char
-        if char == '':
+        if char == ' ':
             lista_palavras.append(palavra)
-            palavra = ''
-    return obter_tamanho(lista_palavras)
+            palavra = ' '
+    return len(lista_palavras) + 1
+
+def substituir_substr(texto: str, substring: str, substing_substituir:str, ignore_case = False) -> str:
+    cont_ignore = 0
+    nova_sttr = ''
+    memoria = ''
+    
+    if ignore_case:
+        substring = para_caixa_baixa(substring) if eh_upper(substring) else substring
+        texto = para_caixa_baixa(texto) if eh_lower(substring) else texto
+        
+        
+    for index in range(obter_tamanho(texto)):
+        if cont_ignore > 0:
+            cont_ignore -= 1
+            continue
+        
+        memoria = ''
+        for item in range(obter_tamanho(substring)):
+            if index + item < obter_tamanho(texto):
+                memoria += texto[index + item]
+
+        if memoria == substring:
+            nova_sttr += substing_substituir
+            cont_ignore = len(substring)
+            continue
+        
+        else:
+            nova_sttr += texto[index]
+    return nova_sttr
+ 
+    
