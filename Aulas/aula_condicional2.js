@@ -8,7 +8,6 @@ function main(){
     const situacao = verificarSituacao(media)
     console.log(`Sua média é de ${media.toFixed(2)} e sua situação é: ${situacao}`)
 
-     
 }
 function calcularMedia(a,b){
     return (a + b ) / 2
