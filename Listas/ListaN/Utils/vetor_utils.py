@@ -18,6 +18,13 @@ def contar_caractere(vetor: list, caractere:str, ignore_case: bool = False) -> i
     return cont_caractere
 
 # STRING UTILS:
+
+def inverter_palavra(palavra):
+    palavra_invertida = ''
+    for i in range(len(palavra)):
+        palavra_invertida += palavra[len(palavra) - i - 1]
+    return palavra_invertida
+    
 def lowercase_char(char: str) -> str:
     if not eh_lower_char(char):
         return chr(ord(char) + 32)
