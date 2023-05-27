@@ -5,7 +5,7 @@ def printcenter(texto: str) -> None:
     meio = (tamanho_terminal // 2) - len(texto)
     print(' ' * meio + texto )
     
-def clear_screen():
+def clear_screen() -> None:
     try:
         if name == 'posix':
             system("clear")
@@ -28,9 +28,24 @@ def obter_numero_positivo(label = 'Me diga um número positivo: ', tem_limite = 
             
     return numero
 
-def enter_to_continue():
+
+def obter_texto(label:str = 'Texto: ') -> str:
+    texto = input(label)
+    return texto
+
+
+def obter_texto_max(label:str, tamanho_max:int) -> str:
+    texto = obter_texto(label)
+    while len(texto) > tamanho_max:
+        return obter_texto_max(f'Texto de no máx({tamanho_max}): ', tamanho_max)
+    return texto
+
+
+def enter_to_continue() -> None:
     input('<ENTER to continue...')
     clear_screen()
+    
+
 
            
            
