@@ -1,6 +1,8 @@
 from features import multiplicar_cada_numero_por_n, localizar_posicoes, gerar_vetor, enter_limpar_tela
 from utils import bye
 
+# Implementar opcoes 6
+
 
 def main():
     enter_limpar_tela()
@@ -37,6 +39,8 @@ def menu():
     opcoes +="\n3 - Mostrar números"
     opcoes +="\n4 - Buscar número"
     opcoes += "\n5 - Multiplicar números por N"
+    
+    opcoes += "\n6 - Somar números por N"
     opcoes += "\n0 - Sair"
     opcoes += "\n\n<enter option...> "
 
