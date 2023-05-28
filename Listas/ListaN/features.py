@@ -1,6 +1,8 @@
 from wordplay_utils import *
 from Utils.vetor_utils import * 
 from Utils.io_utils import *
+
+
 def imprimir_todas(vetor):
     mostrar_lista_resumida(vetor)
     print(f'Tem o total de : {len(vetor)}')
