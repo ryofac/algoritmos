@@ -1,9 +1,12 @@
 from Utils.io_utils import *
 from features import *
+import sys
+sys.path.append("/data/despedidas.txt")
+sys.path.append("/data/word_data.txt")
 
 def main():
-    file = open("./data/word_data.txt")
-    despedidas_file = open("./data/despedidas.txt")
+    file = open("/home/ryan/Algoritmos/Listas/ListaN/data/word_data.txt")
+    despedidas_file = open("/home/ryan/Algoritmos/Listas/ListaN/data/despedidas.txt")
     
     word_list = file.readlines()
     word_list = retirar_espacos(word_list)
@@ -59,6 +62,8 @@ def main():
         enter_to_continue()
         opcao = pedir_opcao()
         
+    elif opcao == 9:
+        
     print('Programa encerrado... Tchau coração! <3\n')
     encerrar_programa(despedidas_file)
     
@@ -78,6 +83,7 @@ def menu():
     opcoes += '\n0 - Sair do programa'
     opcoes += '\n >> '
     return opcoes
+
 
 def pedir_opcao():
     # Resolver a indireção do limite
