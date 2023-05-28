@@ -8,5 +8,6 @@ def main():
     
 
 def calcular_dobradura(vezes):
+    pass
         
 main()

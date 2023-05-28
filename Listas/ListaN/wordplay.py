@@ -62,7 +62,6 @@ def main():
         enter_to_continue()
         opcao = pedir_opcao()
         
-    elif opcao == 9:
         
     print('Programa encerrado... Tchau coração! <3\n')
     encerrar_programa(despedidas_file)
