@@ -1,5 +1,4 @@
 def main():
-    
     print('1/2 - 1/3 + 1/4 - 1/4 + ... 1/N')
     
     numero_final = int(input('Digite os números que você quer somar na sequência: '))
@@ -11,8 +10,5 @@ def main():
         print('1/', i , '+' if i % 2 == 0 else '-', end = ' ')
         
     print('\b\b = {:.2f}'.format(soma))
-    
-    
-    
     
 main()

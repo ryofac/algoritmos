@@ -1,7 +1,7 @@
 def main():
     try:
         quantidade_testes = int(input())
-        for c in range(quantidade_testes):
+        for _ in range(quantidade_testes):
             linguas = []
             quantidade_linguas = input()
             for i in range(quantidade_linguas):

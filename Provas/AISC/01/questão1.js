@@ -22,7 +22,7 @@ function main(){
     const duracao = anos_meses(tempo_anos)
 
      // Calcula o valor a ser financiado
-    const financiamento = calcular_financiamento(valor_mensalidade, duracao)
+    const financiamento =calcular_financiamento(valor_mensalidade, duracao)
     
 
     // Valor pago durante o curso
