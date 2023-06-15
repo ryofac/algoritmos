@@ -1,6 +1,6 @@
 ## IO UTILS ATUALIZADA
 import sys
-sys.path.append('/home/ryan/Algoritmos/Listas/ListaR/utils')
+sys.path.append('./utils')
 
 
 from time import sleep
