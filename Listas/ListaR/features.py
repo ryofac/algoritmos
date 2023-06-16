@@ -1,6 +1,7 @@
 from utils.vetor_utils import *
 from utils.str_utils import eh_numero
 import utils.io_utils as io
+import time
 
 
 def gerar_n_posicoes(posicoes, valor_padrao = None):
@@ -38,28 +39,138 @@ def elevar_a_potencia_N(vetor):
 
 
 def contar_positivos_negativos_zeros(vetor):
-    opcoes = '\nObter...'
-    opcoes = '\n1 - Quantidade de ZEROS'
-    opcoes += '\n2 - Quantidade de POSITIVOS'
-    opcoes += '\n3- Quantidade de NEGATIVOS\n > '
+    menu = gerar_menu('Quantidade de ZEROS', 
+                      'Quantidade de POSITIVOS', 
+                      'Quantidade de NEGATIVOS', titulo= 'Obter..')
     
-    escolha = io.obter_numero_intervalo(opcoes, 3, 1)
+    escolha = io.obter_numero_intervalo(menu, 3, 1)
+    todos = obter_tamanho_vetor(vetor)
     
     if escolha == 1:
-        zeros = reduzir(vetor, lambda x, y : x + y, 1, 0, lambda x: x == 0)
+        zeros = reduzir(vetor, lambda x, y : x + 1, atual= 0, regra=lambda x: x == 0)
         print(f'ZEROS: {zeros}')
-    elif escolha == 2:
-        positivos = reduzir(vetor, lambda x, y: x + y, 1, 0, lambda x: x > 0)
-        print(f'POSITIVOS: {positivos}')
-    elif escolha == 3:
-        negativos = reduzir(vetor, lambda x, y: x + y, 1, 0, lambda x: x < 0)
-        print(f'NEGATIVOS: {negativos}')
+        print(io.barra_porcentagem(zeros, todos))
+        print('... do valor total')
     
+        
+    elif escolha == 2:
+        positivos = reduzir(vetor, lambda x, y: x + 1, atual= 0, regra= lambda x: x > 0 and eh_numero(x))
+        print(f'POSITIVOS: {positivos}')
+        print(io.barra_porcentagem(positivos, todos))
+        print('... do valor total')
+    elif escolha == 3:
+        negativos = reduzir(vetor, lambda x, y : x + 1, atual = 0, regra= lambda x: x < 0 and eh_numero(x))
+        print(f'NEGATIVOS: {negativos}')
+        print(io.barra_porcentagem(negativos, todos))
+        print('... do valor total')
+        
+    
+def exibir_somatorio_todos_negativos_positivos(vetor):
+    if obter_tamanho_vetor(vetor) == 0:
+        print('Vetor sem elementos!')
+        return
+    todos = reduzir(vetor, lambda x, y: x + y, regra=eh_numero)
+    menu = gerar_menu('Somatório de TODOS', 
+                    'Somatório de POSITIVOS', 
+                    'Somatório de NEGATIVOS', titulo= 'Obter..')
+    
+    escolha = io.obter_numero_intervalo(menu, 3, 1)
+    
+    if escolha == 1:
+        print('A soma de todos é ', todos)
+    
+    elif escolha == 2:
+        positivos = reduzir(vetor, lambda x, y: x + y, regra= lambda x: x > 0 if eh_numero(x) else x) 
+        print('A soma de todos os positivos é ', positivos)
+            
+    elif escolha == 3:
+        negativos = reduzir(vetor, lambda x, y: x + y, regra= lambda x: x < 0 if eh_numero(x) else x)
+        print('A soma de todos os negativos é ', negativos)
+        
+        
+def remover_texto(vetor):
+    print('Removendo Não números...')
+    cont = 0
+    while cont < 100:
+        time.sleep(0.001)
+        print(io.barra_loading(cont, 100))
+        io.clear_screen()
+        cont += 1
+    print(io.barra_loading(cont, 100))
+    out = filtrar(vetor, eh_numero)
+    return out
+
+
+def exibir_maior_menor_numero_vetor(vetor):
+    print('O maior número do vetor é: ', maior_numero_vetor(vetor))
+    print('O menor número do vetor é ', menor_numero_vetor(vetor))
+
+
+def sortear_positivo_e_negativo(vetor):
+    numeros = filtrar(vetor, eh_numero)
+    
+    if reduzir(numeros, lambda x, y: x or y > 0, atual= False):
+        positivo_random = escolher_item_aleatorio(vetor)
+        while positivo_random < 0:
+            numero_aleatorio = escolher_item_aleatorio(vetor)
+            positivo_random = numero_aleatorio
+        print(f'Elemento positivo aleatório: {positivo_random}')
+    else:
+        print('Sem elementos positivos :(')
+        
+    if reduzir(numeros, lambda x, y: x or y < 0, atual= False):
+        negativo_random = escolher_item_aleatorio(vetor)
+        while negativo_random > 0:
+            numero_aleatorio = escolher_item_aleatorio(vetor)
+            negativo_random = numero_aleatorio
+        print(f'Elemento negativo aleatório: {negativo_random}')
+    else:
+        print('Sem elementos negativos :(')
+        
+    
+def adcionar_grupos_n_grupos_t_tamanho(vetores):
+    out = []
+    vetor = []
+    n = io.obter_inteiro('N: ', tipo="+")
+    t = io.obter_inteiro('T: ', tipo="+")
+    
+    numero_aleatorio = gerar_numero_aleatorio_entre(1, 100)
+    
+    while obter_tamanho_vetor(out) < n:
+        if numero_aleatorio not in vetor:
+            adcionar_elemento(vetor, numero_aleatorio)
+        else:
+            numero_aleatorio = gerar_numero_aleatorio_entre(1,100)
+        if obter_tamanho_vetor(vetor) == t:
+            adcionar_elemento(out, vetor)
+            vetor = []
+    return out
+        
+        
+        
+        
+        
     
 
 ## utils
 
+
+def gerar_menu(*opcoes, titulo = '==== MENU ===='):
+    menu = titulo
+    for i in range(obter_tamanho_vetor(opcoes)):
+        menu += f'\n{i + 1} - {opcoes[i]}'
+    menu += '\n> '
+    return menu
+
+def gerar_numero_aleatorio_entre(min, max):
+    return int(random() * (max - min) + min)
+    
+
 def mostrar_vetor(vetor, quantidade_max_valores = 6):
+    if eh_matriz(vetor):
+        print('VETOR DE VETORES')
+        mostrar_matriz(matriz= vetor)
+        return
     if obter_tamanho_vetor(vetor) == 0:
         print('Vetor sem itens ainda!')
     elif len(vetor) > quantidade_max_valores:
@@ -67,6 +178,9 @@ def mostrar_vetor(vetor, quantidade_max_valores = 6):
     else:
         print(vetor)
         
+def mostrar_matriz(matriz):
+    for item in matriz:
+        print(item)
         
 def tchauzinho(arquivo_incrivel_motivacional_supermassa):
     mensagens = arquivo_incrivel_motivacional_supermassa.readlines()

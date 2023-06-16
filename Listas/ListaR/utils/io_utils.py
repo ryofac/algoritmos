@@ -1,6 +1,6 @@
 ## IO UTILS ATUALIZADA
 import sys
-sys.path.append('./utils')
+sys.path.append('./utils') # Impede que o caminho bugue
 
 
 from time import sleep
@@ -128,16 +128,23 @@ def obter_texto_min_max(label:str, tamanho_min:int, tamanho_max:int) -> str:
 
 # Imprime uma barra de loading na tela
 def barra_loading(valor_atual:float, valor_final:float):
+    porcentagem = (valor_atual / valor_final) * 100
+    multiplicador = int(porcentagem // 10)
+    total = ' ' * 10
+    progresso = '#' * multiplicador
+    quanto_falta = ' ' * (len(total) - len(progresso))
+    return (f'[{progresso}{quanto_falta}] ({porcentagem:.2f}%)\r')
     
-    while valor_atual < valor_final:
-        porcentagem = (valor_atual / valor_final) * 100
-        multiplicador = int(porcentagem // 10)
-        total = ' ' * 10
-        progresso = '#' * multiplicador
-        quanto_falta = ' ' * (len(total) - len(progresso))
-        return (f'[{progresso}{quanto_falta}] ({porcentagem:.2f}%)\r')
 
-
+def barra_porcentagem(valor_obtido, valor_total):
+    porcentagem = (valor_obtido / valor_total) * 100
+    multiplicador = int(porcentagem // 10)
+    total = ' ' * 10
+    progresso = '#' * multiplicador
+    quanto_falta = ' ' * (len(total) - len(progresso))
+    return (f'[{progresso}{quanto_falta}] ({porcentagem:.2f}%)\r')
+    
+    
  # Escrever o texto lentamente (quando -speed, mais rápido)
 def printslow(*palavras, speed = 0.04, inline = False):
     for elemento in palavras:

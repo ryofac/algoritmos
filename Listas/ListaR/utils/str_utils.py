@@ -170,8 +170,18 @@ def contar_palavras(texto:str) -> int:
     return obter_tamanho(lista_palavras)
     
 def eh_numero(numero):
-    if numero == '' or numero == None: return False
-    for num in str(numero):
-        if not 57 >= ord(num) >= 48 and num != '.':
-            return False
-    return True
+    # if numero == '' or numero == None: return False
+    # if str(numero)[0] == '-' and contar_caractere(str(numero), '-') > 1: return False
+    # for num in str(numero):
+    #     if not 57 >= ord(num) >= 48 and num != '.' and num != '-':
+    #         return False
+    # return True
+    try:
+        float(numero)
+    except:
+        return False
+    return True  
+
+if __name__ == '__main__':
+    num = '-10'
+    print(contar_caractere(num, '-'))
