@@ -9,7 +9,7 @@ def main():
         
     while True:
         clear_screen()
-        mostrar_vetor(vetores)
+        mostrar_vetor(vetores, center = True)
         opcao = obter_numero_intervalo(menu(), 20, 0)
             
         if opcao == 0:
@@ -39,6 +39,7 @@ def main():
             vetores = elevar_a_potencia_N(vetores)
         
         elif opcao == 6:
+            mostrar_vetor(vetores)
             contar_positivos_negativos_zeros(vetores)
         
         elif opcao == 7:
@@ -56,6 +57,35 @@ def main():
         elif opcao == 11:
             vetores = adcionar_grupos_n_grupos_t_tamanho(vetores)
             mostrar_vetor(vetores)
+            
+        elif opcao == 12:
+            pedir_novo_vetor_e_verificar_se_esta_no_vetor(vetores)
+        
+        elif opcao == 13:
+            top_n_maiores(vetores)
+        
+        elif opcao == 14:
+            top_n_menores(vetores)
+        
+        elif opcao == 15:
+            analise_media(vetores)
+        
+        elif opcao == 16:
+            print('Easter Egg ;)')
+            
+        elif opcao == 17:
+            mostrar_questao_grande(vetores)
+        
+        elif opcao == 18:
+            ordem_crescente(vetores)
+        
+        elif opcao == 19:
+            ordem_decrescente(vetores)
+        
+        elif opcao == 20:
+            obter_numero_multiplo_N_M(vetores)
+            
+            
         
         enter_to_continue()
     
@@ -74,7 +104,14 @@ def menu():
     opcoes += '\n 9 - Obter maior e menor número vetor'
     opcoes += '\n 10 - Obter POSITIVO e NEGATIVO aleatório'
     opcoes += '\n 11 - Adcionar N grupos, tamanho T (Vetor de Vetores)'
-
+    opcoes += '\n 12 - Obter vetor e ver se está 100% presente no outro (e na ordem)'
+    opcoes += '\n 13 - Pedir N MAIORES'
+    opcoes += '\n 14 - Pedir N MENORES'
+    opcoes += '\n 15 - VALOR MÉDIO, MENORES QUE A MÉDIA e MAIORES QUE MÉDIA '
+    opcoes += '\n 17 - Somatório da Média dos Números Positivos múltiplos dois COM o Produto acumulado dos números negativos pares reduzidos à metade'
+    opcoes += '\n 18 - Ordenar os números em ordem crescente...'
+    opcoes += '\n 19 - Ordenar os números em ordem decrescente... '
+    opcoes += '\n 20 - Obter número múltiplo de N e M, simultaneamente'
 
     opcoes += '\n 0 - Sair'
     opcoes += '\n> '

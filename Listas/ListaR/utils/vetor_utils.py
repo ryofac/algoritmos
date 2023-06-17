@@ -1,5 +1,8 @@
 from str_utils import eh_numero
 
+import sys
+sys.path.append('./utils')
+
 def filtrar(vetor, regra, reverso=False, matriz_como_vetor = False):
     out = []
     if not eh_matriz(vetor) or matriz_como_vetor:
@@ -70,7 +73,17 @@ def reduzir(vetor, funcao_acumuladora, atual = None, regra= lambda x: x, matriz_
                     acumulado = funcao_acumuladora(acumulado, vetor[i][j])  
         return acumulado if acumulado != None else 0
         
-        
+### Ordenar ###
+
+def quicksort(vetor):
+    if obter_tamanho_vetor(vetor) <= 1:
+        return vetor
+    pivot = escolher_item_aleatorio(vetor)
+    igual = filtrar(vetor, lambda x: x == pivot)
+    right = filtrar(vetor, lambda x: x > pivot)
+    left = filtrar(vetor, lambda x: x < pivot)
+    return quicksort(left) + igual + quicksort(right)
+    
             
 
 def adcionar_elemento(vetor, elemento):
@@ -82,6 +95,20 @@ def vetor_sem_elemento(vetor, elemento):
         if not item == elemento:
             adcionar_elemento(out, item)
     return out
+
+def my_slice(vetor, inicio, final):
+    out = []
+    
+    while inicio < final:
+        adcionar_elemento(out, vetor[inicio])
+        inicio += 1
+        
+    while inicio > final:
+        adcionar_elemento(out, vetor[inicio])
+        inicio -= 1
+        
+    return out
+        
 
 def maior_numero_vetor(vetor):
     maior_numero = reduzir(vetor, lambda x, y: x if x > y else y, regra= eh_numero)
@@ -116,4 +143,6 @@ def escolher_item_aleatorio(vetor):
         return lista_unica[int(random() * obter_tamanho_vetor(lista_unica))]
     
     return vetor[int(random() * obter_tamanho_vetor(vetor))]
+
+
 
