@@ -3,7 +3,7 @@ def main():
 	binarios = [int(x) for x in input('Digite um binário com 8 digitos: ').split()]
  
 	while len(binarios) != 8:
-		print('Preencha os 8espaços!')
+		print('Preencha os 8 espaços!')
 		binarios = [int(x) for x in input('Digite um binário com 8 digitos: ').split()]
   
  
