@@ -1,0 +1,10 @@
+========= PatroBET's: Rifa =========
+Gaste aqui seu suado dinheirinho
+1 - Obter total de pontos
+2 - Obter Ponto e nome de cada participante
+3 - Definir novo valor do ponto
+4 - Visão Geral (Taxa de Administração, Pontos Disponíveis,...)
+5 - Resetar!
+6 - SORTEAR!!
+0 - Sair...
+> 

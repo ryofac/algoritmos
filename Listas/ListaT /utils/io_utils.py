@@ -1,12 +1,11 @@
 ## IO UTILS ATUALIZADA
 import sys
+sys.path.append("./utils")
 from vetor_utils import *
-sys.path.append('./utils') # Impede que o caminho bugue
 
 
 from time import sleep
 from os import system, get_terminal_size
-import str_utils as st
 
 def obter_tamanho_tela():
     return get_terminal_size().columns

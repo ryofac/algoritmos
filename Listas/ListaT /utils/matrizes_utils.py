@@ -1,3 +1,5 @@
+import sys
+sys.path.append("./utils")
 from vetor_utils import *
 
 def eh_matriz_quadrada(vetor):
