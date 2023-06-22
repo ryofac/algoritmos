@@ -22,6 +22,7 @@ data_default = {
         'pontos_comprados' : obter_pontos_comprados(pessoas)
     }
 
+
 def main():
     data = data_default.copy()
     while True:
@@ -48,7 +49,7 @@ def main():
             for i in range(100):
                 print('Resetando!')
                 print(barra_loading(i, 100))
-                sleep(0.001)
+                sleep(0.01)
                 clear_screen()
             del data
             data = data_default.copy()
@@ -64,11 +65,13 @@ def main():
             
         input('<Enter>')
         clear_screen()
+        
 
 def menu(file):
     out = ''
     for linha in file:
         out += linha
     return out
+
 
 main()

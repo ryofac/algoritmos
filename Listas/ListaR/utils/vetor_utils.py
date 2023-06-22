@@ -1,7 +1,5 @@
 from str_utils import eh_numero
 
-import sys
-sys.path.append('./utils')
 
 def filtrar(vetor, regra, reverso=False, matriz_como_vetor = False):
     out = []

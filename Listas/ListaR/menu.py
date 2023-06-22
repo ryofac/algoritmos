@@ -17,19 +17,13 @@ def main():
             break
         
         if opcao == 1:
-            posicoes = obter_inteiro('Quantas posições? \n> ', tipo= "+")
-            valor_padrao = input('Qual o valor padrão? \n> ')
-            vetores = gerar_n_posicoes(posicoes, valor_padrao)
-            mostrar_vetor(vetores, 10)
+            vetores = gerar_valores_padrao(vetores)
             
         elif opcao == 2:
             substituir_valores_um_a_um(vetores)
             
         elif opcao == 3:
-            minimo = obter_inteiro('Digite o valor mínimo: ')
-            maximo = obter_inteiro('Digite o valor máximo: ')
-            vetores = preencher_automaticamente_vetor(maximo, minimo)
-            mostrar_vetor(vetores, 10)
+            vetores = preencher_vetor_intervalo(vetores)
             
         elif opcao == 4:
             quantidade = obter_inteiro('Digite a quantidade máxima de elementos a ser exibida: ')
@@ -83,10 +77,8 @@ def main():
             ordem_decrescente(vetores)
         
         elif opcao == 20:
-            obter_numero_multiplo_N_M(vetores)
+            vetores = obter_e_apagar_numero_multiplo_N_M(vetores)
             
-            
-        
         enter_to_continue()
     
     

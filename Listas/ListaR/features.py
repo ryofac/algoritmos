@@ -3,11 +3,25 @@ from utils.str_utils import eh_numero
 import utils.io_utils as io
 import time
 
+def gerar_valores_padrao(vetores):
+    posicoes = io.obter_inteiro('Quantas posições? \n> ', tipo= "+")
+    valor_padrao = input('Qual o valor padrão? \n> ')
+    vetores = gerar_n_posicoes(posicoes, valor_padrao)
+    mostrar_vetor(vetores, 10)
+    return vetores
+    
 def gerar_n_posicoes(posicoes, valor_padrao = None):
     out = [None] * posicoes
     out = mapear(out, lambda x: valor_padrao, lambda x: x == None)
     out = mapear(out, lambda x: float(x), eh_numero)
     return out
+
+def preencher_vetor_intervalo(vetores):
+    minimo = io.obter_inteiro('Digite o valor mínimo: ')
+    maximo = io.obter_inteiro('Digite o valor máximo: ')
+    vetores = preencher_automaticamente_vetor(maximo, minimo)
+    mostrar_vetor(vetores, 10)
+    return vetores
 
 
 def substituir_valores_um_a_um(vetor):
@@ -181,7 +195,7 @@ def top_n_maiores(vetores):
         print(f'{n} é maior que vetor (tamanho = {obter_tamanho_vetor(vetores)})!')
         n = io.obter_inteiro('N: ', tipo= '+')
     vetor_ordenado = quicksort(vetores)
-    print(f'Os {n} maiores são: ', my_slice(vetor_ordenado, obter_tamanho_vetor(vetores)-1, n))
+    print(f'Os {n} maiores são: ', my_slice(vetor_ordenado, obter_tamanho_vetor(vetores) - n , obter_tamanho_vetor(vetores)))
     
 def top_n_menores(vetores):
     if obter_tamanho_vetor(vetores)== 0:
@@ -296,11 +310,17 @@ def ordem_decrescente(vetores):
         multiplos_n = filtrar(geral, lambda x: x % n == 0)
         print(f'MULTIPLOS DE N: {multiplos_n}') if multiplos_n else print('Sem múltiplos de N')
         
-def obter_numero_multiplo_N_M(vetores):
+def obter_e_apagar_numero_multiplo_N_M(vetores):
     n = io.obter_inteiro('N: ')
     m = io.obter_inteiro('M: ')
     multiplo_N_M = filtrar(vetores, lambda x: x % n == 0 and x % m == 0)
+    if obter_tamanho_vetor(vetores) > 1:
+        out = filtrar(vetores, lambda x: x not in multiplo_N_M)
+        return out
+    out = filtrar(vetores, lambda x: x != multiplo_N_M )
     print(f'Multiplo de n e m é {multiplo_N_M}') if obter_tamanho_vetor(multiplo_N_M) > 0 else print('Não há esse número!')
+    return out
+
     
     
     
@@ -318,9 +338,7 @@ def calcular_media_vetor(vetor):
         
         
     
-###### menu_utils #####
-
-
+###### Menu_utils #####
 def gerar_menu(*opcoes, titulo = '==== MENU ===='):
     menu = titulo
     for i in range(obter_tamanho_vetor(opcoes)):
