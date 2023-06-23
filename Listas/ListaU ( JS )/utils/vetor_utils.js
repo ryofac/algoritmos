@@ -40,7 +40,7 @@ export function string_vetor(array){
     return itens
 }
 
-export function count_elements(array1, array2){
+export function count_elements_between(array1, array2){
     let count = 0
     for(let element of array1){
         for(let element2 of array2){

@@ -2,6 +2,7 @@ import { question } from "readline-sync";
 import { len_of } from "./str_utils.js";
 import {red_text, yellow_text, green_text, blue_text} from "./visual_utils.js"
 import { is_in } from "./vetor_utils.js";
+import chalk from "chalk";
 
 
 export function get_integer(label='Digite um inteiro: ', type=undefined){
@@ -106,6 +107,12 @@ export function show_text(text, color){
     }
     else if(color === 'G'){
         console.log(green_text(text))
+    }
+    else if(color === '*'){
+        console.log(chalk.gray(text))
+    }
+    else if (color === 'Y'){
+        console.log(chalk.yellow(text))
     }
 }
 

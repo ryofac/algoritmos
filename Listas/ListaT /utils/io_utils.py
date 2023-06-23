@@ -161,19 +161,19 @@ def mostrar_vetor(vetor, quantidade_max_valores = 6, center = False):
         return
     if obter_tamanho_vetor(vetor) == 0:
         if center:
-            io.printcenter('Vetor sem itens ainda!')
+            printcenter('Vetor sem itens ainda!')
         else:
             print('Vetor sem itens ainda!')
     elif len(vetor) > quantidade_max_valores:
         if center:
-            io.printcenter(f'VETOR: {vetor[0 : quantidade_max_valores - 1]}\b...({len(vetor) - quantidade_max_valores} itens)...{vetor[len(vetor) - 1]}]')
+            printcenter(f'VETOR: {vetor[0 : quantidade_max_valores - 1]}\b...({len(vetor) - quantidade_max_valores} itens)...{vetor[len(vetor) - 1]}]')
         else:
             print(f'VETOR: {vetor[0 : quantidade_max_valores - 1]}\b...({len(vetor) - quantidade_max_valores} itens)...{vetor[len(vetor) - 1]}]')
     else:
         if not center:
             print(vetor)
             return
-        io.printcenter(vetor)
+        printcenter(vetor)
         
 def mostrar_matriz(matriz):
     for item in matriz:

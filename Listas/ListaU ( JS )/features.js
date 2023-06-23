@@ -1,12 +1,12 @@
 import {readFileSync, writeFileSync} from "fs"; 
 
-import { COLOrFuL, green_text, clear_screen, red_text} from "./utils/visual_utils.js";
+import { COLOrFuL, green_text, clear_screen, red_text, enter_to_continue} from "./utils/visual_utils.js";
 
 import { get_integer, get_integer_interval, get_number, 
     get_random_number_between, get_text, 
     show_text} from "./utils/io_utils.js";
 
-import { is_in, my_filter, my_map, string_vetor, count_elements, eh_objeto_vazio } from "./utils/vetor_utils.js"
+import { is_in, my_filter, my_map, string_vetor, count_elements_between, eh_objeto_vazio } from "./utils/vetor_utils.js"
 import { get_random_array, get_vetor } from "./utils/io_utils.js";
 import { ulid } from "ulid"
 import { len_of } from "./utils/str_utils.js";
@@ -102,7 +102,11 @@ export function ler_bilhetes(file){
 }
 
 export function atribuir_sessao_anterior(file){
+    let sorteio_atual = ler_sessao_anterior(file)
     console.log('Vi que você fechou o arquivo ' + red_text('sem salvar') + ' quer tentar recuperar dados? ')
+    show_text(`\tBilhete premiado: ${sorteio_atual.length > 0? sorteio_atual['premiado'] : 'Sem dados!'}`, "*")
+    show_text(`\tValor Bilhete: R$${sorteio_atual['valor_bilhete'].toFixed(2)}`, "*")
+    show_text(`\tValor total arrecadado: R$${sorteio_atual['valor_arrecadado'].toFixed(2)}`, "*")
     let opcao = '1 - Sim'
     opcao += '\n2 - Não'
     opcao += '\n> '
@@ -117,7 +121,6 @@ export function atribuir_sessao_anterior(file){
         }   
         return sorteio_atual
     }
-    let sorteio_atual = ler_sessao_anterior(file)
     return sorteio_atual
 }
     
@@ -171,7 +174,7 @@ export function vender_bilhete_manual(pessoas, bilhetes_file){
         
         let menu = 'Digite a opção!'
         menu += '\n1 - Gerar Manual'
-        menu += '\n2 ' + COLOrFuL('Gerar SURPRESINHA')
+        menu += '\n2 ' + COLOrFuL(' Gerar SURPRESINHA')
         menu += '\n> '
         const opcao = get_integer_interval(menu, 1, 2)
         while(!opcao) opcao = get_integer_interval(menu, 1, 2)
@@ -182,6 +185,7 @@ export function vender_bilhete_manual(pessoas, bilhetes_file){
                 let new_bilhete = criar_bilhete(pessoa['id'], bilhete, ulid())
                 bilhetes_file.push(new_bilhete)
                 pessoa['bilhetes'].push(new_bilhete['numeros'])
+                show_text(new_bilhete['numeros'] + ' GERADO! ', "Y")
             }
         }else{
             const quantidade_bilhetes = get_integer('Quantidade de bilhetes a ser comprada: ')
@@ -190,8 +194,10 @@ export function vender_bilhete_manual(pessoas, bilhetes_file){
                 let new_bilhete = criar_bilhete(pessoa['id'], bilhete, ulid())
                 bilhetes_file.push(new_bilhete)
                 pessoa['bilhetes'].push(new_bilhete['numeros'])
-                }
+                show_text(new_bilhete['numeros'] + ' GERADO! ', "Y")
+
             }
+    }
 }
 
 export function bye(bye_file){
@@ -235,7 +241,7 @@ export function obter_ganhadores(premiado, bilhetes){
         quadra: []
     }
     for(let bilhete of bilhetes){
-        const acertos = count_elements(bilhete['numeros'], premiado)
+        const acertos = count_elements_between(bilhete['numeros'], premiado)
         if(acertos === bilhete.length) ganhadores['total'].push(bilhete)
         if(acertos === 5) ganhadores['quina'].push(bilhete)
         if(acertos === 4) ganhadores['quadra'].push(bilhete)
