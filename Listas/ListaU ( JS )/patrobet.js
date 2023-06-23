@@ -1,66 +1,101 @@
-import { get_integer, get_text, show_text, get_integer_interval, delay } from "./utils/io_utils.js"
+import { get_integer, get_text,
+     show_text, get_integer_interval, 
+     delay } from "./utils/io_utils.js"
+
 import {vender_bilhete_manual,
      ler_arquivo, bye,
      gerar_bilhetes_dezenas, 
-     write_in_file, ler_bilhetes,
-     enter_to_continue, ler_pessoas} from "./features.js"
+     write_in_file, ler_bilhetes,ler_pessoas, 
+     mostrar_ganhadores,
+    zerar_dados, mostrar_bilhetes,
+    calcular_valor_arrecadado, check_empty_values, mostrar_valor_arrecadado, DEBUG, atribuir_sessao_anterior, ler_sessao_anterior } from "./features.js"
+
+import { clear_screen, enter_to_continue } from "./utils/visual_utils.js"
+
 
 // Criação de constantes para melhor leitura visual
 const opcoes = {
     VENDA_BILHETE_MANUAL: 1,
     MOSTRAR_VALOR_ARRECADADO: 2,
-    MOSTRAR_TABELA_ARRECADACAO: 3,
-    REALIZAR_SORTEIO_DEZENAS: 4,
-    GERAR_N_SURPRESINHAS: 5,
-    MOSTRAR_BILHETES: 6,
+    REALIZAR_SORTEIO_DEZENAS: 3,
+    MOSTRAR_BILHETES: 4,
+    APAGAR_DB: 5,
+    SAIR: 0
 }
-const bilhetes = ler_bilhetes("./data/bilhetes.txt")
-const pessoas = ler_pessoas("./data/pessoas.txt", bilhetes)
+
+let bilhetes = ler_bilhetes("./data/bilhetes.txt")
+let pessoas = ler_pessoas("./data/pessoas.txt", bilhetes)
 const bye_file = ler_arquivo("./data/bye.txt")
 
 
+// Guarda dados importantes da sessão
+let sorteio_atual = ler_sessao_anterior('./data/temp.txt')
+
 function main(){
-    let opcao = get_integer_interval(menu(), 0, 10)
-    while(opcao !== 0){
-        console.log(pessoas)
-        console.log(bilhetes)
+    clear_screen()
+    let opcao
+    show_text('Bem vindo ao sistema PATROBET!')
+    if(sorteio_atual['well_closed'] === false){
+       sorteio_atual = atribuir_sessao_anterior('./data/temp.txt')
+    }else{
+        sorteio_atual = {
+            premiado: [],
+            valor_arrecadado: 0,
+            valor_bilhete: 0,
+            debug: false,
+            well_closed: false
+        }
+    }
+    clear_screen()
+    while(opcao !== opcoes['SAIR']){
+        // "Checagem" e seleção de valores iniciais
+        check_empty_values(sorteio_atual)
+        DEBUG(sorteio_atual, pessoas, bilhetes)
+        calcular_valor_arrecadado(pessoas, sorteio_atual)
+        sorteio_atual['well_closed'] = false
+        write_in_file("./data/temp.txt", sorteio_atual, 'sorteio_atual') // Salva a cada volta
+        opcao = get_integer_interval(menu(), 0, 10) // Pede a opção
+        enter_to_continue()
+
         if (opcao === opcoes['VENDA_BILHETE_MANUAL']) {
             vender_bilhete_manual(pessoas, bilhetes)
         }
-        if (opcao === opcoes['MOSTRAR_VALOR_ARRECADACAO']) {
-            mostrar_valor_arrecadado(bilhetes)
-
+        if (opcao === opcoes['MOSTRAR_VALOR_ARRECADADO']) {
+            mostrar_valor_arrecadado(sorteio_atual)
         }
         if (opcao == opcoes['REALIZAR_SORTEIO_DEZENAS']) {
-            const sorteado = gerar_bilhetes_dezenas()
-            show_text('O sorteado foi: ' + sorteado)
-        }
-       
-        if(opcao === opcoes['GERAR_N_SURPRESINHAS']){
-            const n = get_integer('Digite a quantidade de bilhetes: ')
-            for(let i = 0; i < n; i ++){
-                bilhetes.push(gerar_bilhetes_dezenas())
-            }
+           sorteio_atual['premiado'] = gerar_bilhetes_dezenas()
+           mostrar_ganhadores(bilhetes, sorteio_atual['premiado'], pessoas)
         }
         if (opcao === opcoes['MOSTRAR_BILHETES']){
-
+            mostrar_bilhetes(pessoas, sorteio_atual['premiado'])
+            enter_to_continue()
         }
-        opcao = get_integer_interval(menu(), 0, 10)
-        enter_to_continue()
+        if (opcao == opcoes["APAGAR_DB"]){
+            pessoas = zerar_dados()
+            bilhetes = zerar_dados()
+            sorteio_atual['premiado'] = []
+            sorteio_atual['valor_arrecadado'] = 0
+        }
+       
     }
-    bye(bye_file)
+    clear_screen()
+    sorteio_atual['well_closed'] = true
     write_in_file("./data/bilhetes.txt", bilhetes, 'bilhetes')
     write_in_file("./data/pessoas.txt", pessoas, 'pessoas')
+    write_in_file("./data/temp.txt", sorteio_atual, 'sorteio_atual')
+
+    bye(bye_file)
 }
 
 function menu(){
     let opcao = "========= PATROBET's: MegaPATRO da PATROvirada ==========="
     opcao += '\n1 - Venda manual de bilhete'
     opcao += '\n2 - Mostrar valor arrecadado'
-    opcao += '\n3 - Mostrar tabela de arrecadação '
-    opcao += ('\n4 - Realizar sorteio dezenas')
-    opcao += '\n5 - Gerar surpresinha '
-    opcao += '\n6 - Mostrar bilhetes'
+    opcao += '\n3 - Realizar sorteio dezenas'
+    opcao += '\n4 - Mostrar bilhetes'
+    opcao += '\n5 - Apagar TUDO!'
+    opcao += '\n0 - SAIR'
     opcao += '\n > '
     return opcao
 

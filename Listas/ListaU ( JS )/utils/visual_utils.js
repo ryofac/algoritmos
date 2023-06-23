@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import { len_of } from "./str_utils.js";
+import { get_text } from "./io_utils.js";
 
 
 export function red_text(text, bold = false){
@@ -16,7 +17,6 @@ export function blue_text(text, bold = false){
     }
     return chalk.blue(text)
 }
-
 
 export function green_text(text, bold = false){
     if(bold){
@@ -67,4 +67,13 @@ export function COLOrFuL(text){
         new_text += colors[index](text[i], true)
     }
     return new_text
+}
+
+export function enter_to_continue(){
+    get_text('<ENTER>...')
+    clear_screen()
+}
+
+export function clear_screen(){
+    console.clear()
 }
