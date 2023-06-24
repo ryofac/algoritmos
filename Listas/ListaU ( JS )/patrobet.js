@@ -64,6 +64,10 @@ function main(){
             mostrar_valor_arrecadado(sorteio_atual)
             enter_to_continue()
         }
+        if(opcao === opcoes['MOSTRAR_TABELA_ARRECADACAO']){
+            mostrar_tabela_arrecadacao(sorteio_atual)
+
+        }
         if (opcao == opcoes['REALIZAR_SORTEIO_DEZENAS']) {
            sorteio_atual['premiado'] = gerar_bilhetes_dezenas()
            mostrar_ganhadores(bilhetes, sorteio_atual['premiado'], pessoas)

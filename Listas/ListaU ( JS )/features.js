@@ -363,3 +363,15 @@ export function get_pessoa_by_id(pessoas, id){
         }
     }
 }
+
+export function mostrar_tabela_arrecadacao(sorteio_atual){
+    const valor_arrecadado = sorteio_atual['valor_arrecadado']
+    if(!valor_arrecadado){
+        show_text('Sem bilhetes cadastrados!', 'R')
+        return
+    }
+    show_text("==============================")
+    show_text("")
+    
+
+}

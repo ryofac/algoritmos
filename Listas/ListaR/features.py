@@ -376,6 +376,16 @@ def mostrar_matriz(matriz):
         print(item)
         
 def tchauzinho(arquivo_incrivel_motivacional_supermassa):
-    mensagens = arquivo_incrivel_motivacional_supermassa.readlines()
-    print('\n' + escolher_item_aleatorio(mensagens))
+    from time import sleep
+    from os import system
+    mensagens = escolher_item_aleatorio(arquivo_incrivel_motivacional_supermassa.readlines()  )
+    for i in range(5):
+        system("clear")
+        print('\n' + mensagens)
+        print(f'Encerrando em... {5-i}')
+        sleep(1)
+    system("clear")
+    print('Obrigado por executar o programa!')
+    exit()
+    
 
