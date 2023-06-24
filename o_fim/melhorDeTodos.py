@@ -50,9 +50,12 @@ def main():
         const += 1
         sleep(0.01)
         clear_screen()
-        
+    
+    printcenter(Fore.LIGHTBLACK_EX + ' ======= > Um oferencimento PFG < =======' + Fore.RESET)
     write_in_file(file="./data/adjetivos.txt", content=adjetivos)
     write_in_file(file="./data/pessoas.txt", content=pessoas, tipo='pessoas')
-    
+        
     bye('./data/bye.txt')
+    
+
 main()
