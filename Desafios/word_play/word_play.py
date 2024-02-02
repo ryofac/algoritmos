@@ -3,6 +3,11 @@ from utils.math_utils import *
 from utils.str_utils import *
 import sys
 
+# Programa que funciona como um "word play", que trabalha manipulação de strings:
+# Carrega as palavras de um arquivo e lista todas as palavras, mostram palavras
+# com no mínimo n caracteres, palavras que não contém letras, ou palavras que contém
+# todas as letras
+
 def main():
     while True:
         arquivo = open("/home/ryan/Algoritmos/Desafios/word_play/words.txt")
