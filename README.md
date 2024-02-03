@@ -1,5 +1,5 @@
 # Algoritmos ADS.1
-Esse repositório contém resoluções de exercício de desafios realizados durante toda a disciplina
+Esse repositório contém resoluções de exercício e de desafios realizados durante toda a disciplina
 
 ## Aulas
 Essa pasta contém algumas anotações das aulas passadas em forma de código comentado
